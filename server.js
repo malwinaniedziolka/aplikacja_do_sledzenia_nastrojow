@@ -5,7 +5,7 @@ const { STATUS_CODE } = require("./constants/statusCode");
 const { MENU_LINKS } = require("./constants/navigation");
 const { PORT } = require("./config");
 const logger = require("./utils/logger");
-const homeRoutes = require("./routing/home");
+const entryRoutes = require("./routing/entries");
 const getFileFromAbsolutePath = require("./utils/getFileFromAbsolutePath");
 //dalsze importy
 
@@ -25,7 +25,7 @@ app.use((request, _response, next) => {
 });
 
 //app.use kolejne
-app.use(homeRoutes);
+app.use(entryRoutes);
 
 app.use((request, response) => {
   const { url } = request;
