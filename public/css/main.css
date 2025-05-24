@@ -15,10 +15,11 @@ main {
 .heading {
   color: white;
   margin: 0;
-  margin-bottom: 10;
+  margin-top: 10;
   font-size: 2.5rem;
 }
 
+/* Nawigacja */
 .navigation{
   background-color: #76b3ed;
   padding: 0.7rem 0;
@@ -52,4 +53,132 @@ main {
 
 .navigation__link--active {
   background-color: #5592cb;
+}
+
+/* Formularz */
+.form {
+  background-color: #6693be;
+  padding: 2.5rem;
+  border-radius: 0.7rem;
+  margin: 5 auto;
+  max-width: 775px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+}
+
+.form__group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.form__input {
+  background-color: #ffffff;
+  color: #323232;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #000000;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: #454545;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Formularz - ocenianie dnia */
+.form__rating-options input[type="radio"]{
+  display: none;
+}
+
+.form__rating-options {
+  font-size:larger;
+  border-radius: 10px;
+}
+
+.rating {
+  padding: 5;
+  margin-right: 20;
+  font-size:larger;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+  border-radius: 5px;
+}
+
+input[type="radio"]:checked + .rating {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px rgb(176, 176, 176));
+  outline: 3px solid rgb(236, 236, 236);
+}
+
+/* Formularz - nastroj dnia */
+.form__mood-options input[type="radio"]{
+  display: none;
+}
+
+.mood-icon {
+  margin-right: 10;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+  border-radius: 10px;
+}
+
+input[type="radio"]:checked + .mood-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px rgb(176, 176, 176));
+  outline: 3px solid rgb(236, 236, 236);
+}
+
+/* Formularz - przycisk dodawania */
+.add_button {
+  padding: 0.8rem 1.5rem;
+  background-color: #4d7294;
+  color: white;
+  border: #2e1525;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  font-weight: 600;
+  margin-top: 10;
+}
+
+.add_button:hover {
+  background-color: #39556f;
+}
+
+/* widok historii wpisow */
+.entry_title {
+  display: inline;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.entry_date {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.entry_description {
+  margin-top: -10;
+  color: #eaeaea;
+}
+
+.entry_rating {
+  color: #eaeaea;
 }

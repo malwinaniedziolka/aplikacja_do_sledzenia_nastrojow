@@ -10,7 +10,7 @@ class Entries {
     }
 
     static #entries = [ //przykladowe dane
-        { id: '1', mood: "Smutna", description: "opis dnia", rating: "2", date: "2026-04-21"},
+        { id: '1', mood: "Smutna", description: "opis dnia", rating: "2", date: "2025-04-21"},
         { id: '2', mood: "Wesoła", description: "opis dnia 2", rating: "5", date: "2025-03-21"},
     ];
 

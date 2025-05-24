@@ -12,10 +12,10 @@
       <ul>
         <% entries.forEach(entry => { %>
         <li>
-            <h3 class="entry_title">Nastrój: <%= entry.mood %></h3>
+            <h3 class="entry_title"><%= entry.mood %></h3>
+            <p class="entry_date">- <%= entry.date %></p>
             <p class="entry_description">Opis: <%= entry.description %></p>
-            <p class="entry_rating">Opis: <%= entry.rating %></p>
-            <p class="entry_date">Data: <%= entry.date %></p>
+            <p class="entry_rating">Ocena dnia: <%= entry.rating %>/5</p>
         </li>
         <% }); %>
       </ul>

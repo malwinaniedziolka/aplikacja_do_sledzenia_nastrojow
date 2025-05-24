@@ -21,6 +21,9 @@ exports.addNewEntry = (req, res) => {
 exports.getEntriesView = (req, res) => {
   const entries = Entries.getAll();
 
+  //sortowanie zeby w historii sie pojawialo od najnowszej daty
+  entries.sort((a, b) => new Date(b.date) - new Date(a.date)); 
+
   res.render("entries.ejs", {
     headTitle: "Historia wpisów",
     path: "/history",

@@ -11,7 +11,40 @@
       <form class="form" action="/add" method="POST">
         <div class="form__group">
           <label class="form__label" for="mood"> Nastrój: </label>
-          <input id="mood" class="form__input" type="text" name="mood" />
+          <div class="form__mood-options">
+            <label>
+              <input type="radio" name="mood" value="Szczęśliwy/a" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f601.png" alt="Szczęsliwa emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="OK" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f609.png" alt="Wesoła emotka z zamkniętym jednym okiem" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Normalnie" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f610.png" alt="Emotka z prostą buzią" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Smutny/a" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/2639-fe0f.png" alt="Smutna emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Załamany/a" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f62d.png" alt="Płacząca emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Zmęczony/a" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f634.png" alt="Śpiąca emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Zły/a" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f620.png" alt="Zła emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Zestresowany/a" required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f630.png" alt="Zestresowana emotka" class="mood-icon">
+            </label>
+          </div>
         </div>
         <div class="form__group">
           <label class="form__label" for="description"> Opis: </label>
@@ -24,13 +57,38 @@
         </div>
         <div class="form__group">
           <label class="form__label" for="rating"> Ocena dnia: </label>
-          <input id="rating" class="form__input" type="text" name="rating" />
+          <div class="form__rating-options">
+            <label>
+              <input type="radio" name="rating" value="0" required>
+              <span class="rating">0</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="1" required>
+              <span class="rating">1</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="2" required>
+              <span class="rating">2</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="3" required>
+              <span class="rating">3</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="4" required>
+              <span class="rating">4</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="5" required>
+              <span class="rating">5</span>
+            </label>
+          </div>
         </div>
         <div class="form__group">
-          <label class="form__label" for="deadline"> Data: </label>
-          <input id="deadline" class="form__input" type="date" name="deadline" />
+          <label class="form__label" for="date"> Data: </label>
+          <input id="date" class="form__input" type="date" name="date" />
         </div>
-        <button class="add_task_button" type="submit">Dodaj wpis</button>
+        <button class="add_button" type="submit">Dodaj wpis</button>
       </form>
     </main>
   </body>
