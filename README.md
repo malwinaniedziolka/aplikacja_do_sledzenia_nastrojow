@@ -1,0 +1,1 @@
+# aplikacja_do_sledzenia_nastrojow
