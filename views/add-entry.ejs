@@ -89,6 +89,9 @@
           <input id="date" class="form__input" type="date" name="date" />
         </div>
         <button class="add_button" type="submit">Dodaj wpis</button>
+        <% if (typeof errorMessage !== 'undefined') { %>
+          <p style="color: red;"><%= errorMessage %></p>
+        <% } %>
       </form>
     </main>
   </body>
