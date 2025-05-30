@@ -1,11 +1,11 @@
 const HOME_LINK = {
-  label: "Home",
+  label: "Strona Główna",
   path: "/",
 };
 
 const MENU_LINKS = [
   HOME_LINK,
-  { label: "Dodaj wpis", path: "/add" },
+  { label: "Dodaj Wpis", path: "/add" },
   { label: "Historia", path: "/history" },
   { label: "Statystyki", path: "/stats" },
   //dodac kolejne zakladki jak cos

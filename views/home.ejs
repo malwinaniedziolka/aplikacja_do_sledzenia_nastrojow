@@ -7,7 +7,20 @@
     <main>
       <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
       activeLinkPath}); %>
-      <h1 class="heading">Home</h1>
+      <h1 class="heading">Witaj!</h1>
+      <p class="text">Twój ostatni wpis:</p>
+      <% if (newestEntry?.mood) { %>
+      <div class="last__entry">
+        <div class="last__entry__title">
+            <h3 class="last__entry__mood"><%= newestEntry.mood %></h3>
+            <p class="last__entry__date"><%= newestEntry.date %></p>
+        </div>
+            <p class="last__entry__rating">Ocena dnia: <%= newestEntry.rating %>/5</p>
+            <p class="last__entry__description"><%= newestEntry.description %></p>
+      </div>
+      <% } else { %>
+      <div>No entries yet.</div>
+      <% }%>
     </main>
   </body>
 </html>

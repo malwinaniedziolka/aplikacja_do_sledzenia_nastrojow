@@ -9,6 +9,7 @@ router.get("/", homeController.getHomeView);
 router.get("/add", entriesController.getAddEntryView);
 router.post("/add", entriesController.addNewEntry);
 router.get("/history", entriesController.getEntriesView);
-//router.delete("/delete/:id", entriesController.deleteEntry);
+router.get("/stats", entriesController.getStatisticsView);
+router.delete("/delete/:id", entriesController.deleteEntry);
 
 module.exports = router;

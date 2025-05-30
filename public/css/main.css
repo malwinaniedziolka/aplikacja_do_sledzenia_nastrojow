@@ -15,7 +15,7 @@ main {
 .heading {
   color: white;
   margin: 0;
-  margin-top: 10;
+  margin-top: 15;
   font-size: 2.5rem;
 }
 
@@ -161,24 +161,122 @@ input[type="radio"]:checked + .mood-icon {
 }
 
 /* widok historii wpisow */
-.entry_title {
+.entry__title {
   display: inline;
   font-size: 1.5rem;
   color: #ffffff;
 }
 
-.entry_date {
+.entry__date {
   display: inline-block;
   font-size: 1.2rem;
   font-weight: 500;
   color: #ffffff;
+  margin-left: 50;
 }
 
-.entry_description {
+.entry__description {
+  font-size: 1.1rem;
   margin-top: -10;
   color: #eaeaea;
 }
 
-.entry_rating {
+.entry__rating {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-left: 50;
+}
+
+.entry{
+  background-color: #2e3d4b;
+  border: 4px solid #76b3ed;
+  list-style-type: none;
+  padding: 0.5;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 0;
+  border-radius: 0.7rem;
+  margin: 0;
+  margin-bottom: 1rem;
+  margin-left: -40px;
+  max-width: 200rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+}
+
+.entry__list{
+  list-style-type: none;
+}
+
+.button{
+  margin: 0;
+  margin-top: -5;
+  margin-left: -5;
+  padding: 0.5rem 1.5rem;
+  background-color: #6fa9df;
+  color: white;
+  border: #2e1525;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #6095c6;
+}
+
+.button:active {
+  background-color: #6095c6;
+}
+
+
+/* widok ostatniego wpisu */
+.last__entry{
+  background-color: #2e3d4b;
+  border: 4px solid #76b3ed;
+  padding: 0.5;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1.3rem;
+  border-radius: 0.7rem;
+  margin: 0;
+  margin-bottom: 1rem;
+  margin-right: 105rem;
+  max-width: 200rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+}
+
+.last__entry__title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.last__entry__mood {
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.last__entry__date {
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.last__entry__description {
+  font-size: 1.2rem;
   color: #eaeaea;
+}
+
+.last__entry__rating {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: -5;
+}
+
+.text{
+  font-size: 1.4rem;
+  margin-left: 5;
 }

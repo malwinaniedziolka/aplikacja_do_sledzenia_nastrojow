@@ -1,10 +1,11 @@
 const Entries = require("../models/EntriesModel");
 
 const { MENU_LINKS } = require("../constants/navigation");
+const { STATUS_CODE } = require("../constants/statusCode");
 
 exports.getAddEntryView = (req, res) => {
   res.render("add-entry.ejs", {
-    headTitle: "Dodaj wpis",
+    headTitle: "Dodaj Wpis",
     path: "/add",
     menuLinks: MENU_LINKS,
     activeLinkPath: "/add",
@@ -17,13 +18,13 @@ exports.addNewEntry = (req, res) => {
   const entryDate = new Date(date);
 
   //sprawdzamy czy pola nie sa puste, nie dziala jeszcze poprawnie
-  if(!mood || !description || !rating || !date){
+  if(!mood || !rating || !date){
     return res.render("add-entry.ejs", {
       headTitle: "Dodaj wpis",
       path: "/add",
       menuLinks: MENU_LINKS,
       activeLinkPath: "/add",
-      errorMessage: "Wszystkie pola muszą być wypełnione",
+      errorMessage: "Wypełnij pola z nastrojem, oceną i datą.",
     });
   }
 
@@ -72,6 +73,15 @@ exports.getEntriesView = (req, res) => {
     path: "/history",
     activeLinkPath: "/history",
     entries,
+    menuLinks: MENU_LINKS,
+  });
+};
+
+exports.getStatisticsView = (req, res) => {
+  res.render("stats.ejs", {
+    headTitle: "Statystyki",
+    path: "/stats",
+    activeLinkPath: "/stats",
     menuLinks: MENU_LINKS,
   });
 };
