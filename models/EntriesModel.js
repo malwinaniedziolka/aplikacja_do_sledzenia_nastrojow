@@ -1,5 +1,19 @@
 const { randomUUID } = require('crypto'); //do automatycznich id
 
+const Database = require('better-sqlite3');
+const db = new Database('moods.db'); //baza danych
+
+//tworzy tabelke jesli jej nie ma
+db.exec(`
+  CREATE TABLE IF NOT EXISTS moods (
+    id INTEGER PRIMARY KEY,
+    mood TEXT NOT NULL,
+    description TEXT,
+    rating INTEGER NOT NULL,
+    date TEXT NOT NULL
+  );
+`);
+
 class Entries {
     constructor(mood, description, rating, date) {
         this.id = randomUUID(); //daje randomowe id
@@ -9,33 +23,29 @@ class Entries {
         this.date = date;
     }
 
-    static #entries = [ //przykladowe dane
-        { id: '1', mood: "Smutny/a", description: "opis dnia", rating: "2", date: "2025-04-21"},
-        { id: '2', mood: "Wesoły/a", description: "opis dnia 2", rating: "5", date: "2025-03-21"},
-        { id: '3', mood: "Zły/a", description: "", rating: "3", date: "2025-02-21"},
-    ];
-
-    static getAll() { //potem zmienic jesli chcemy ladowac tylko kilkanascie ostatnich chb
-        return this.#entries;
+    static getAll() {
+        return db.prepare('SELECT * FROM moods ORDER BY date DESC').all();
     }
 
-    static add(task) {
-        this.#entries.push(task);
+    static add({ mood, description, rating, date }) {
+        const stmt = db.prepare('INSERT INTO moods (mood, description, rating, date) VALUES (?, ?, ?, ?)');
+        stmt.run(mood, description, rating, date);
     }
 
     static getLast() {
-        if (!this.#entries.length) {
-            return;
-        }
-        return this.#entries.reduce((latest, entry) => {
-            return new Date(entry.date) > new Date(latest.date) ? entry : latest;
-        });
+        return db.prepare('SELECT * FROM moods ORDER BY date DESC LIMIT 1').get();
     }
 
-    //kolejne metody do obslugi wpisow
-
     static deleteById(id) {
-        this.#entries = this.#entries.filter((task) => task.id !== id);
+        db.prepare('DELETE FROM moods WHERE id = ?').run(id);
+    }
+
+    static updateById(id, newData) {
+        const { mood, description, rating, date } = newData;
+        db.prepare(`
+        UPDATE moods SET mood = ?, description = ?, rating = ?, date = ?
+        WHERE id = ?
+        `).run(mood, description, rating, date, id);
     }
 }
 

@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title><%= headTitle %></title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <main>
+      <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
+      activeLinkPath}); %>
+      <h1 class="heading">Edytuj wpis</h1>
+      <form class="form" action="/edit/<%= entry.id %>" method="POST">
+        <div class="form__group">
+          <label class="form__label" for="mood"> Nastrój: </label>
+          <div class="form__mood-options">
+            <label>
+              <input type="radio" name="mood" value="Szczęśliwy/a" <%= entry.mood === "Szczęśliwy/a" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f601.png" alt="Szczęsliwa emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="OK" <%= entry.mood === "OK" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f609.png" alt="Wesoła emotka z zamkniętym jednym okiem" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Normalnie" <%= entry.mood === "Normalnie" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f610.png" alt="Emotka z prostą buzią" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Smutny/a" <%= entry.mood === "Smutny/a" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/2639-fe0f.png" alt="Smutna emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Załamany/a" <%= entry.mood === "Załamany/a" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f62d.png" alt="Płacząca emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Zmęczony/a" <%= entry.mood === "Zmęczony/a" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f634.png" alt="Śpiąca emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Zły/a" <%= entry.mood === "Zły/a" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f620.png" alt="Zła emotka" class="mood-icon">
+            </label>
+            <label>
+              <input type="radio" name="mood" value="Zestresowany/a" <%= entry.mood === "Zestresowany/a" ? "checked" : "" %> required>
+              <img src="https://emoji.aranja.com/static/emoji-data/img-apple-160/1f630.png" alt="Zestresowana emotka" class="mood-icon">
+            </label>
+          </div>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="description"> Opis: </label>
+          <input
+            id="description"
+            class="form__input"
+            type="text"
+            name="description"
+            value="<%= entry.description %>"
+          />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="rating"> Ocena dnia: </label>
+          <div class="form__rating-options">
+            <label>
+              <input type="radio" name="rating" value="0" <%= entry.rating == 0 ? "checked" : "" %> required>
+              <span class="rating">0</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="1" <%= entry.rating == 1 ? "checked" : "" %> required>
+              <span class="rating">1</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="2" <%= entry.rating == 2 ? "checked" : "" %> required>
+              <span class="rating">2</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="3" <%= entry.rating == 3 ? "checked" : "" %> required>
+              <span class="rating">3</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="4" <%= entry.rating == 4 ? "checked" : "" %> required>
+              <span class="rating">4</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="5" <%= entry.rating == 5 ? "checked" : "" %> required>
+              <span class="rating">5</span>
+            </label>
+          </div>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="date"> Data: </label>
+          <input id="date" class="form__input" type="date" name="date" value="<%= entry.date %>" />
+        </div>
+        <button class="add_button" type="submit">Zapisz zmiany</button>
+        <% if (typeof errorMessage !== 'undefined') { %>
+          <p style="color: rgb(175, 5, 5); font-weight: 600;"><%= errorMessage %></p>
+        <% } %>
+      </form>
+    </main>
+  </body>
+</html>

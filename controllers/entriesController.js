@@ -77,50 +77,58 @@ exports.getEntriesView = (req, res) => {
   });
 };
 
-//Bierzący tydzień, miesiąc, rok
-const getWeekNumber = (date) => {
-  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  const dayNum = d.getUTCDay() || 7;
-  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+exports.getEditEntryView = (req, res) => {
+  const { id } = req.params;
+  const entry = Entries.getAll().find(e => e.id.toString() === id.toString());
+
+  if (!entry) {
+    return res.status(STATUS_CODE.NOT_FOUND).render("404.ejs", {
+      headTitle: "404",
+      message: "Nie znaleziono wpisu.",
+      menuLinks: MENU_LINKS,
+      activeLinkPath: ""
+    });
+  }
+
+  res.render("edit-entry.ejs", {
+    headTitle: "Edytuj wpis",
+    path: `/edit/${id}`,
+    menuLinks: MENU_LINKS,
+    activeLinkPath: "/history",
+    entry, 
+  });
 };
 
-exports.getStatisticsView = (req, res) => {
-   const allEntries = Entries.getAll();
+exports.editEntry = (req, res) => {
+  const { id } = req.params;
+  const { mood, description, rating, date } = req.body;
+  const today = new Date();
+  const entryDate = new Date(date);
 
-   const now = new Date();
-   const currentMonth = now.getMonth();
-   const currentYear = now.getFullYear();
-   const currentWeek = getWeekNumber(now);
+  if (!mood || !rating || !date) {
+    return res.render("edit-entry.ejs", {
+      headTitle: "Edytuj wpis",
+      path: `/edit/${id}`,
+      menuLinks: MENU_LINKS,
+      activeLinkPath: "/history",
+      errorMessage: "Wypełnij pola z nastrojem, oceną i datą.",
+      entry: { id, mood, description, rating, date },
+    });
+  }
 
-    // Filtrowanie wpisów
-  const monthEntries = allEntries.filter(entry => {
-    const d = new Date(entry.date);
-    return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
-  });
+  if (entryDate > today){
+    return res.render("edit-entry.ejs", {
+      headTitle: "Edytuj wpis",
+      path: `/edit/${id}`,
+      menuLinks: MENU_LINKS,
+      activeLinkPath: "/history",
+      errorMessage: "Nie możesz dodać wpisu na przyszłą datę.",
+      entry: { id, mood, description, rating, date },
+    });
+  }
 
-  const yearEntries = allEntries.filter(entry => {
-    const d = new Date(entry.date);
-    return d.getFullYear() === currentYear;
-  });
-
-  const weekEntries = allEntries.filter(entry => {
-    const d = new Date(entry.date);
-    return getWeekNumber(new Date(d)) === currentWeek &&
-           new Date(d).getFullYear() === currentYear;
-  });
-
-  res.render("stats.ejs", {
-    headTitle: "Statystyki",
-    path: "/stats",
-    activeLinkPath: "/stats",
-    menuLinks: MENU_LINKS,
-    entries: allEntries,
-    weekEntries,
-    monthEntries,
-    yearEntries,
-  });
+  Entries.updateById(id, { mood, description, rating, date });
+  res.redirect("/history");
 };
 
 exports.deleteEntry = (req, res) => {

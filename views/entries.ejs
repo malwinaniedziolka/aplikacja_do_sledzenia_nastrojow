@@ -18,6 +18,7 @@
             <p class="entry__rating">Ocena dnia: <%= entry.rating %>/5</p>
             <p class="entry__description"><%= entry.description %></p>
             <form>
+            <a href="/edit/<%= entry.id %>" class="button">Edit</a>
             <button class="button" type="button" onclick="deleteEntry('<%= entry.id %>')">Delete</button>
           </form>
           </div>
