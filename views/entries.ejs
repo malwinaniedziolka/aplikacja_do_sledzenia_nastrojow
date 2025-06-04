@@ -7,7 +7,7 @@
     <main>
       <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
       activeLinkPath }); %>
-      <h1 class="heading">Historia wpisów</h1>
+      <h1 class="heading">Historia Wpisów</h1>
       <% if (entries?.length > 0) { %>
       <ul>
         <% entries.forEach(entry => { %>
@@ -18,8 +18,8 @@
             <p class="entry__rating">Ocena dnia: <%= entry.rating %>/5</p>
             <p class="entry__description"><%= entry.description %></p>
             <form>
-            <a href="/edit/<%= entry.id %>" class="button">Edit</a>
-            <button class="button" type="button" onclick="deleteEntry('<%= entry.id %>')">Delete</button>
+            <a href="/edit/<%= entry.id %>" class="button">Edytuj</a>
+            <button class="button" type="button" onclick="deleteEntry('<%= entry.id %>')">Usuń</button>
           </form>
           </div>
         </li>
@@ -27,12 +27,12 @@
       </ul>
       <% } else { %>
       <br />
-      <div>No entries yet.</div>
+      <div>Brak wpisów.</div>
       <% }%>
     </main>
     <script>
       function deleteEntry(id) {
-        if (!confirm(`Are you sure you want to delete this entry?`)) {
+        if (!confirm(`Czy jesteś pewny, że chcesz skasować ten wpis?`)) {
           return;
         }
 
@@ -42,7 +42,7 @@
           if (res.ok) {
             window.location.reload();
           } else {
-          alert("Error while deleting.");
+          alert("Błąd przy usuwaniu.");
           }
         });
       }
