@@ -1,7 +1,7 @@
 # Aplikacja do sledzenia nastrojow
 
 ### **Opis**
-Celem aplikacji jest stworzenie aplikacji do codziennego śledzenia nastrojów użytkownika. Aplikacja pozwala użytkownikowi na szybkie i proste dodanie wpisu związanego z jego samopoczuciem danego dnia. Każdy wpis zawiera wybór emocji, krótki opis dnia oraz ocenę od 0 do 5, co pozwala na bardziej szczegółowe spojrzenie na to, jak dany dzień był odczuwany. Dzięki statystykom użytkownik ma możliwość porównywać swoje emocje, co może pomóc w lepszym ich zrozumieniu i zauważeniu ewentualnych wzorców w samopoczuciu. 
+Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów użytkownika. Aplikacja pozwala użytkownikowi na szybkie i proste dodanie wpisu związanego z jego samopoczuciem danego dnia. Każdy wpis zawiera wybór emocji, krótki opis dnia oraz ocenę od 0 do 5, co pozwala na bardziej szczegółowe spojrzenie na to, jak dany dzień był odczuwany. Dzięki statystykom użytkownik ma możliwość porównywać swoje emocje, co może pomóc w lepszym ich zrozumieniu i zauważeniu ewentualnych wzorców w samopoczuciu. 
 
 ### **Funkcjonalności**
 - Wybieranie emocji którą się czuje danego dnia
