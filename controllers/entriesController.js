@@ -3,7 +3,7 @@ const Entries = require("../models/EntriesModel");
 const { MENU_LINKS } = require("../constants/navigation");
 const { STATUS_CODE } = require("../constants/statusCode");
 
-exports.getAddEntryView = (req, res) => {
+exports.getAddEntryView = async (req, res) => {
   res.render("add-entry.ejs", {
     headTitle: "Dodaj Wpis",
     path: "/add",
@@ -12,7 +12,7 @@ exports.getAddEntryView = (req, res) => {
   });
 };
 
-exports.addNewEntry = (req, res) => {
+exports.addNewEntry = async (req, res) => {
   const { mood, description, rating, date } = req.body;
   const today = new Date();
   const entryDate = new Date(date);
@@ -40,7 +40,7 @@ exports.addNewEntry = (req, res) => {
   }
 
   //sprawdzamy czy wpis już istnieje o tej samej dacie
-  const allEntries = Entries.getAll();
+  const allEntries = await Entries.getAll();
   const entryExists = allEntries.some((entry) => {
     const existingDate = new Date(entry.date);
     return existingDate.getTime() === entryDate.getTime();
@@ -58,12 +58,12 @@ exports.addNewEntry = (req, res) => {
 
   //jak wszystko jest ok dodajemy wpis
   const newEntry = new Entries(mood, description, rating, date);
-  Entries.add(newEntry);
+  await Entries.add(newEntry);
   res.redirect("/history");
 };
 
-exports.getEntriesView = (req, res) => {
-  const entries = Entries.getAll();
+exports.getEntriesView = async (req, res) => {
+  const entries = await Entries.getAll();
 
   //sortowanie zeby w historii sie pojawialo od najnowszej daty
   entries.sort((a, b) => new Date(b.date) - new Date(a.date)); 
@@ -77,9 +77,9 @@ exports.getEntriesView = (req, res) => {
   });
 };
 
-exports.getEditEntryView = (req, res) => {
+exports.getEditEntryView = async (req, res) => {
   const { id } = req.params;
-  const entry = Entries.getAll().find(e => e.id.toString() === id.toString());
+  const entry = await Entries.getAll().find(e => e.id.toString() === id.toString());
 
   if (!entry) {
     return res.status(STATUS_CODE.NOT_FOUND).render("404.ejs", {
@@ -99,7 +99,7 @@ exports.getEditEntryView = (req, res) => {
   });
 };
 
-exports.editEntry = (req, res) => {
+exports.editEntry = async (req, res) => {
   const { id } = req.params;
   const { mood, description, rating, date } = req.body;
   const today = new Date();
@@ -127,13 +127,13 @@ exports.editEntry = (req, res) => {
     });
   }
 
-  Entries.updateById(id, { mood, description, rating, date });
+  await Entries.updateById(id, { mood, description, rating, date });
   res.redirect("/history");
 };
 
-exports.deleteEntry = (req, res) => {
+exports.deleteEntry = async (req, res) => {
   const { id } = req.params;
-  Entries.deleteById(id);
+  await Entries.deleteById(id);
 
   res.status(STATUS_CODE.OK).json({ success: true });
 }

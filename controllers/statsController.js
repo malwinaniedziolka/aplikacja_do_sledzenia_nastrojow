@@ -11,8 +11,8 @@ const getWeekNumber = (date) => {
   return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
 };
 
-exports.getStatisticsView = (req, res) => {
-   const allEntries = Entries.getAll();
+exports.getStatisticsView = async (req, res) => {
+   const allEntries =  await Entries.getAll();
 
    const now = new Date();
    const currentMonth = now.getMonth();

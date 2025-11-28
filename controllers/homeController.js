@@ -1,8 +1,8 @@
 const { MENU_LINKS } = require("../constants/navigation");
 const Entries = require("../models/EntriesModel");
 
-exports.getHomeView = (request, response) => {
-  const newestEntry = Entries.getLast();
+exports.getHomeView =  async(request, response) => {
+  const newestEntry = await Entries.getLast();
 
   response.render("home.ejs", {
     headTitle: "Strona Główna",

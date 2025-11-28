@@ -1,18 +1,15 @@
 const { randomUUID } = require('crypto'); //do automatycznich id
-
-const Database = require('better-sqlite3');
-const db = new Database('moods.db'); //baza danych
+const { Pool } = require('pg');
+require("dotenv").config();
 
 //tworzy tabelke jesli jej nie ma
-db.exec(`
-  CREATE TABLE IF NOT EXISTS moods (
-    id INTEGER PRIMARY KEY,
-    mood TEXT NOT NULL,
-    description TEXT,
-    rating INTEGER NOT NULL,
-    date TEXT NOT NULL
-  );
-`);
+const pool = new Pool({
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
+});
 
 class Entries {
     constructor(mood, description, rating, date) {
@@ -23,29 +20,32 @@ class Entries {
         this.date = date;
     }
 
-    static getAll() {
-        return db.prepare('SELECT * FROM moods ORDER BY date DESC').all();
+    static async getAll(){
+        const result = await pool.query('SELECT * FROM moods ORDER BY date DESC');
+        return result.rows;
     }
 
-    static add({ mood, description, rating, date }) {
-        const stmt = db.prepare('INSERT INTO moods (mood, description, rating, date) VALUES (?, ?, ?, ?)');
-        stmt.run(mood, description, rating, date);
+    static async add({mood, description, rating, date}){
+        await pool.query('INSERT INTO moods (id, mood, description, rating, date) VALUES ($1, $2, $3, $4, $5)',
+        [randomUUID(), mood, description, rating, date]
+        );
     }
 
-    static getLast() {
-        return db.prepare('SELECT * FROM moods ORDER BY date DESC LIMIT 1').get();
+    static async getLast(){
+        const result = await pool.query('SELECT * FROM moods ORDER BY date DESC LIMIT 1');
+        return result.rows[0];
     }
 
-    static deleteById(id) {
-        db.prepare('DELETE FROM moods WHERE id = ?').run(id);
+    static async deleteById(id) {
+        await pool.query('DELETE FROM moods WHERE id = $1',[id]);
     }
 
-    static updateById(id, newData) {
+    static async updateById(id, newData) {
         const { mood, description, rating, date } = newData;
-        db.prepare(`
-        UPDATE moods SET mood = ?, description = ?, rating = ?, date = ?
-        WHERE id = ?
-        `).run(mood, description, rating, date, id);
+        await pool.query(`
+        UPDATE moods SET mood = $1, description = $2, rating = $3, date = $4
+        WHERE id = $5
+        `,[mood, description, rating, date, id]);
     }
 }
 
