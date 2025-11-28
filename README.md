@@ -24,4 +24,5 @@ Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów u�
 - nodemon ^3.1.10 
 - ejs ^3.1.10 
 - body-parser ^2.2.0 
-- better-sqlite ^11.10.0
+- dotenv ^17.2.3
+- pg ^8.16.3
