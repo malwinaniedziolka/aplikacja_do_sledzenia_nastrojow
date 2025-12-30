@@ -1,30 +1,36 @@
 <html>
-  <head>
-    <title><%= headTitle %></title>
-    <link rel="stylesheet" href="/css/main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <main>
-      <%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath: activeLinkPath }); %>
+	<head>
+		<title><%= headTitle %></title>
+		<link rel="stylesheet" href="/css/main.css" />
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</head>
+	<body>
+		<%- include('partials/navigation', { menuLinks: menuLinks, activeLinkPath:
+		activeLinkPath }); %>
+		<main>
+			<h3 class="texty">Stats</h3>
 
-      <h1 class="heading">Statystyki</h1>
+			<div class="button-group">
+				<button class="button1 button1--active" id="btn-week">Week</button>
+				<button class="button1" id="btn-month">Month</button>
+				<button class="button1" id="btn-year">Year</button>
+			</div>
 
-      <div class="button-group">
-        <button class="button1 button1--active" id="btn-week">Tydzień</button>
-        <button class="button1" id="btn-month">Miesiąc</button>
-        <button class="button1" id="btn-year">Rok</button>
-      </div>
+			<canvas id="statsChart" width="700" height="400"></canvas>
 
-      <canvas id="statsChart" width="700" height="400"></canvas>
+			<!-- dane ukryte -->
+			<script type="application/json" id="weekData">
+				<%- JSON.stringify(weekEntries).replace(/</g, '\\u003c') %>
+			</script>
+			<script type="application/json" id="monthData">
+				<%- JSON.stringify(monthEntries).replace(/</g, '\\u003c') %>
+			</script>
+			<script type="application/json" id="yearData">
+				<%- JSON.stringify(yearEntries).replace(/</g, '\\u003c') %>
+			</script>
 
-      <!-- dane ukryte -->
-      <script type="application/json" id="weekData"><%- JSON.stringify(weekEntries).replace(/</g, '\\u003c') %></script>
-      <script type="application/json" id="monthData"><%- JSON.stringify(monthEntries).replace(/</g, '\\u003c') %></script>
-      <script type="application/json" id="yearData"><%- JSON.stringify(yearEntries).replace(/</g, '\\u003c') %></script>
-
-      <!-- skrypt -->
-      <script src="/js/stats.js"></script>
-    </main>
-  </body>
+			<!-- skrypt -->
+			<script src="/js/stats.js"></script>
+		</main>
+	</body>
 </html>

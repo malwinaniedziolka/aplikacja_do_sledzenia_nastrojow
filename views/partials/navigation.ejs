@@ -1,15 +1,32 @@
-<nav class="navigation">
-  <ul class="navigation__list">
-    <% if (menuLinks.length > 0) { %> <% menuLinks.forEach(link => { %>
-    <li class="navigation__item">
-      <a
-        class="navigation__link <%= activeLinkPath === link.path ? 'navigation__link--active' : '' %>"
-        href="<%= link.path %>"
-      >
-        <%= link.label %>
+<head>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="https://images.vexels.com/media/users/3/341153/isolated/preview/a76b8446eb4c87a176a36c5d10ce8b78-playful-smiley-face-design-with-xs.png" alt=":)" width="30" height="30">
       </a>
-    </li>
-    <% }); %> <% } %>
-    </li>
-  </ul>
-</nav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if (menuLinks.length > 0) { %> <% menuLinks.forEach(link => { %>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="<%= link.path %>"
+            >
+              <%= link.label %>
+            </a>
+          </li>
+          <% }); %> <% } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
