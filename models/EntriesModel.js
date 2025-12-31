@@ -23,9 +23,11 @@ async function createDB() {
 }
 createDB();
 
+const apiUrl = 'https://zenquotes.io/api/random/';
+
 class Entries {
 	constructor(mood, description, rating, date) {
-		this.id = randomUUID(); //daje randomowe id
+		this.id = randomUUID();
 		this.mood = mood;
 		this.description = description;
 		this.rating = rating;
@@ -64,6 +66,13 @@ class Entries {
         `,
 			[mood, description, rating, date, id]
 		);
+	}
+
+	static async getQuote() {
+		const response = await fetch(apiUrl);
+		var data = await response.json();
+		console.log(data);
+		return data[0];
 	}
 }
 

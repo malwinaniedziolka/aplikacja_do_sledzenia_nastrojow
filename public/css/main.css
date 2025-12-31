@@ -33,6 +33,14 @@ main {
 	color: #ff8fb7;
 }
 
+.last-entry {
+	padding-right: 6px;
+}
+
+.quote {
+	padding-left: 6px;
+}
+
 /* Formularz */
 .form {
 	background-color: #ff8fb7;

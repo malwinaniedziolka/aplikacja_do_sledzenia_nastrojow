@@ -2,7 +2,7 @@
 
 ### **Opis**
 
-Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów użytkownika. Aplikacja pozwala użytkownikowi na szybkie i proste dodanie wpisu związanego z jego samopoczuciem danego dnia. Każdy wpis zawiera wybór emocji, krótki opis dnia oraz ocenę od 0 do 5, co pozwala na bardziej szczegółowe spojrzenie na to, jak dany dzień był odczuwany. Dzięki statystykom użytkownik ma możliwość porównywać swoje emocje, co może pomóc w lepszym ich zrozumieniu i zauważeniu ewentualnych wzorców w samopoczuciu.
+Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów użytkownika. Aplikacja pozwala użytkownikowi na szybkie i proste dodanie wpisu związanego z jego samopoczuciem danego dnia. Każdy wpis zawiera wybór emocji, krótki opis dnia oraz ocenę od 0 do 5, co pozwala na bardziej szczegółowe spojrzenie na to, jak dany dzień był odczuwany. Dzięki statystykom użytkownik ma możliwość porównywać swoje emocje, co może pomóc w lepszym ich zrozumieniu i zauważeniu ewentualnych wzorców w samopoczuciu. Dodatkowo, można znaleźć na głównej stronie losowy cytat, który ma na celu zainspirować użytkownika
 
 ### **Funkcjonalności**
 
@@ -12,6 +12,7 @@ Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów u�
 - Edycja i usuwanie wpisów
 - Możliwość przeglądania wcześniej dodanych wpisów
 - Statystyki tygodniowe, miesięczne i roczne
+- Losowe inspirujące cytaty
 
 ### **Instrukcja uruchomienia aplikacji**
 
@@ -31,3 +32,7 @@ Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów u�
 - dotenv ^17.2.3
 - pg ^8.16.3
 - bootstrap ^5.3.8
+
+### **Wykorzystane API**
+
+- ZenQuotes API
