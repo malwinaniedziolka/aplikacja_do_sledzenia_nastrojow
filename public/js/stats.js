@@ -53,17 +53,17 @@ function renderChart(type, weekEntries, monthEntries, yearEntries) {
 	if (type === 'week') {
 		labels = grouped.map((e) => {
 			const d = new Date(e.date);
-			return d.toLocaleDateString('pl-PL', { weekday: 'long' }); //Poniedziałek, Wtorek ...
+			return d.toLocaleDateString('en-US', { weekday: 'long' }); //Poniedziałek, Wtorek ...
 		});
 	} else if (type === 'month') {
 		labels = grouped.map((e) => {
 			const d = new Date(e.date);
-			return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long' }); //31 maja, 29 maja ...
+			return d.toLocaleDateString('en-US', { day: 'numeric', month: 'long' }); //31 maja, 29 maja ...
 		});
 	} else if (type === 'year') {
 		labels = grouped.map((e) => {
 			const [year, month] = e.date.split('-');
-			return new Date(`${year}-${month}-01`).toLocaleDateString('pl-PL', {
+			return new Date(`${year}-${month}-01`).toLocaleDateString('en-US', {
 				month: 'long',
 			}); //Styczeń, Luty ...
 		});
