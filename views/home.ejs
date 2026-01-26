@@ -48,7 +48,14 @@
 				<% }%>
 			</div>
 			<% } else { %>
-			<div>No entries yet.</div>
+			<div class="texty">No entries yet.</div>
+			<div class="card">
+				<div class="card-body" style="border: 2px solid #43334c; border-radius: 0.375rem">
+					<h5 class="card-title">Your random quote:</h5>
+					<p class="card-text"><%= quote.q %></p>
+					<h6 class="card-subtitle mb-2 text-body-secondary"> - <%= quote.a %></h6>
+				</div>
+			</div>
 			<% }%>
 		</main>
 	</body>

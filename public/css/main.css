@@ -11,6 +11,7 @@ main {
 
 .texty {
 	color: #e83c91;
+	margin-bottom: 8px;
 }
 
 .card {
@@ -97,7 +98,9 @@ main {
 	margin-right: 20;
 	font-size: larger;
 	cursor: pointer;
-	transition: transform 0.2s, filter 0.2s;
+	transition:
+		transform 0.2s,
+		filter 0.2s;
 	border-radius: 5px;
 	color: #43334c;
 }
@@ -117,7 +120,9 @@ input[type='radio']:checked + .rating {
 	width: 80px;
 	height: 80px;
 	cursor: pointer;
-	transition: transform 0.2s, filter 0.2s;
+	transition:
+		transform 0.2s,
+		filter 0.2s;
 	border-radius: 10px;
 }
 
@@ -135,7 +140,9 @@ input[type='radio']:checked + .mood-icon {
 	border-radius: 0.7rem;
 	cursor: pointer;
 	font-size: 1.2rem;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+	transition:
+		background-color 0.3s ease,
+		transform 0.2s ease;
 	width: 100%;
 	font-weight: 600;
 	margin-top: 10;
@@ -203,7 +210,9 @@ input[type='radio']:checked + .mood-icon {
 	cursor: pointer;
 	font-size: 15px;
 	text-decoration: none;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+	transition:
+		background-color 0.3s ease,
+		transform 0.2s ease;
 }
 
 .edit-btn {
@@ -243,7 +252,9 @@ input[type='radio']:checked + .mood-icon {
 	border-radius: 0.5rem;
 	cursor: pointer;
 	font-size: 0.9rem;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+	transition:
+		background-color 0.3s ease,
+		transform 0.2s ease;
 }
 
 .button1:hover {

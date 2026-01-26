@@ -16,12 +16,11 @@ Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów u�
 
 ### **Instrukcja uruchomienia aplikacji**
 
-1. Zainstaluj Node.js, jeśli go jeszcze nie posiadasz lub zaktualizuj go do nowej wersji (v22 lub nowsza)
+1. Zainstaluj Node.js, jeśli go jeszcze nie posiadasz lub zaktualizuj go do nowej wersji (v22 lub nowsza) oraz zainstaluj Docker
 2. Zklonuj repozytorium poleceniem (w terminalu): git clone https://github.com/malwinaniedziolka/aplikacja_do_sledzenia_nastrojow
 3. Otwórz aplikację w dowolnym edytorze kodu (np. Visual Studio Code)
-4. Otwórz terminal i po wejściu w odpowiedni katalog w którym jest aplikacja wpisz 'npm install' - zainstaluje to potrzebne biblioteki do odpalenia aplikacji
-5. Napisz w terminalu komendę 'npm start', co odpali aplikacje i stworzy twoją prywatną bazę danych
-6. Otwórz przeglądarkę internetową i przejdź na stronę pod adresem http://localhost:3002
+4. Otwórz terminal i po wejściu w odpowiedni katalog w którym jest aplikacja wpisz 'docker compose up'
+5. Otwórz przeglądarkę internetową i przejdź na stronę pod adresem http://localhost:3002
 
 ### **Wykorzystane biblioteki zewnętrzne**
 
@@ -36,3 +35,8 @@ Celem projektu jest stworzenie aplikacji do codziennego śledzenia nastrojów u�
 ### **Wykorzystane API**
 
 - ZenQuotes API
+
+### **Autorki**
+
+- Maja Chudzik (nr albumu 55204)
+- Malwina Niedziółka (nr albumu 51270)
